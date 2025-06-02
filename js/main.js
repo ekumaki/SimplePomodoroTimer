@@ -21,11 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
         playLongBeepSound(440, 0.6, 'sine'); // A4髻ｳ (荳ｭ髻ｳ)繧帝聞繧√↓蜀咲函
     }
     
-    // 繧ｫ繧ｦ繝ｳ繝医ム繧ｦ繝ｳ髻ｳ繧貞・逕溘☆繧矩未謨ｰ
+    // カウントダウン音を生成する関数
     function playCountdownBeep(isWorkMode) {
-        // 菴懈･ｭ繝｢繝ｼ繝峨°莨第・繝｢繝ｼ繝峨°縺ｫ繧医▲縺ｦ髻ｳ繧貞､峨∴繧・        const frequency = isWorkMode ? 880 : 440;
+        // 作業モードか休憩モードかによって音を変える
+        const frequency = isWorkMode ? 880 : 440;
         const type = isWorkMode ? 'square' : 'sine';
-        playBeepSound(frequency, 0.1, type); // 遏ｭ縺・ン繝ｼ繝鈴浹
+        playBeepSound(frequency, 0.1, type); // 短いビープ音
     }
     
     // 髟ｷ繧√・繝薙・繝鈴浹繧堤函謌舌☆繧矩未謨ｰ
