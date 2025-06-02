@@ -212,8 +212,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const seconds = timerState.timeLeft % 60;
         timeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
-        // 3遘貞燕縺九ｉ繧ｫ繧ｦ繝ｳ繝医ム繧ｦ繝ｳ髻ｳ繧帝ｳｴ繧峨☆
+        // 3秒前からカウントダウン音を鳴らす
         if (timerState.isRunning && timerState.timeLeft <= 3 && timerState.timeLeft > 0) {
+            console.log(`カウントダウン音を再生: 残り${timerState.timeLeft}秒`);
             playCountdownBeep(timerState.isWorkMode);
         }
     }
