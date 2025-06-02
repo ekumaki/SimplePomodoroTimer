@@ -100,6 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         timerState.timerInterval = setInterval(() => {
             if (timerState.timeLeft > 0) {
+                // 残り1秒になったら（0:00になる直前に）アラーム音を鳴らす
+                if (timerState.timeLeft === 1) {
+                    // Play appropriate final alarm
+                    if (timerState.isWorkMode) {
+                        playWorkAlarm(); // 作業終了時の長めのビープ音
+                    } else {
+                        playBreakAlarm(); // 休憩終了時の長めのビープ音
+                    }
+                }
+                
                 timerState.timeLeft--;
                 
                 // Only increment total work time during work mode
@@ -113,23 +123,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Time is up
                 clearInterval(timerState.timerInterval);
                 
-                // Play appropriate final alarm
-                if (timerState.isWorkMode) {
-                    playWorkAlarm(); // 菴懈･ｭ邨ゆｺ・凾縺ｮ髟ｷ繧√・繝薙・繝鈴浹
-                } else {
-                    playBreakAlarm(); // 莨第・邨ゆｺ・凾縺ｮ髟ｷ繧√・繝薙・繝鈴浹
-                }
-                
-                // Switch modes
-                timerState.isWorkMode = !timerState.isWorkMode;
-                timerState.timeLeft = timerState.isWorkMode ? timerState.workDuration : timerState.breakDuration;
-                
-                // Update UI for new mode
-                updateTimerUI();
-                updateTimeDisplay();
-                
-                // Restart timer
-                startTimer();
+                // 音が鳴り終わるのを待ってから次のモードに切り替える（0.7秒後）
+                setTimeout(() => {
+                    // Switch modes
+                    timerState.isWorkMode = !timerState.isWorkMode;
+                    timerState.timeLeft = timerState.isWorkMode ? timerState.workDuration : timerState.breakDuration;
+                    
+                    // Update UI for new mode
+                    updateTimerUI();
+                    updateTimeDisplay();
+                    
+                    // Restart timer
+                    startTimer();
+                }, 700); // アラーム音の長さ（0.6秒）より少し長めに設定
             }
         }, 1000);
     }
@@ -213,8 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const seconds = timerState.timeLeft % 60;
         timeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
-        // 3秒前からカウントダウン音を鳴らす
-        if (timerState.isRunning && timerState.timeLeft <= 3 && timerState.timeLeft > 0) {
+        // 3秒前からカウントダウン音を鳴らす（4秒以下で設定して実質3秒前から鳴るようにする）
+        if (timerState.isRunning && timerState.timeLeft <= 4 && timerState.timeLeft > 0) {
             console.log(`カウントダウン音を再生: 残り${timerState.timeLeft}秒`);
             playCountdownBeep(timerState.isWorkMode);
         }
