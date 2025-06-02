@@ -100,9 +100,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Stop the timer
         clearInterval(timerState.timerInterval);
         
+        // Reset input fields to default values
+        workTimeInput.value = 25;
+        breakTimeInput.value = 5;
+        
         // Reset timer state
         timerState.isRunning = false;
         timerState.isWorkMode = true;
+        timerState.workDuration = 25 * 60; // 25 minutes in seconds
+        timerState.breakDuration = 5 * 60; // 5 minutes in seconds
         timerState.timeLeft = timerState.workDuration;
         timerState.totalWorkTime = 0;
         
