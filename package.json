@@ -1,0 +1,26 @@
+{
+  "name": "simple-pomodoro-timer",
+  "version": "0.1.0",
+  "description": "シンプルなポモドーロタイマーアプリケーション",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo \"このプロジェクトはHTMLファイルを直接ブラウザで開いて使用します。\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekumaki/SimplePomodoroTimer.git"
+  },
+  "keywords": [
+    "pomodoro",
+    "timer",
+    "productivity",
+    "focus"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ekumaki/SimplePomodoroTimer/issues"
+  },
+  "homepage": "https://github.com/ekumaki/SimplePomodoroTimer#readme",
+  "private": true
+}
