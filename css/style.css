@@ -74,11 +74,12 @@ main {
 
 /* Status box */
 .status-box {
-    display: none;
-    border: 2px solid;
+    visibility: hidden; /* 非表示でも領域を確保 */
+    border: 4px solid transparent; /* 非表示時は透明な枠線、太さを増加 */
     padding: 10px;
     border-radius: 5px;
     font-size: 1.25rem;
+    font-weight: bold; /* 文字を太く */
     margin: 15px auto;
     width: 80%;
     text-align: center;
@@ -154,18 +155,18 @@ input[type="number"] {
 
 /* Status box colors */
 .work-mode .status-box {
-    border-color: #87CEEB;
-    color: #87CEEB;
+    border-color: #1E90FF; /* 濃い青（ドッジャーブルー） */
+    color: #1E90FF;
 }
 
 .break-mode .status-box {
-    border-color: #90EE90;
-    color: #90EE90;
+    border-color: #32CD32; /* 濃い緑（ライムグリーン） */
+    color: #32CD32;
 }
 
 .paused .status-box {
-    border-color: #FFD580;
-    color: #FFD580;
+    border-color: #FFA500; /* 濃いオレンジ */
+    color: #FFA500;
 }
 
 /* Responsive design */

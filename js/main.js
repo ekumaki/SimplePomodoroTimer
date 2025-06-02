@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startTimer() {
         // Show status box when timer starts
-        statusBox.style.display = 'block';
+        statusBox.style.visibility = 'visible';
+        statusBox.style.borderColor = ''; // 枠線の色を戻す（CSSで定義された色を使用）
         
         timerState.isRunning = true;
         startPauseBtn.textContent = 'Ⅱ';
@@ -93,7 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update UI for paused state
         document.body.className = 'paused';
         statusBox.textContent = '一時停止中';
-        statusBox.style.display = 'block';
+        statusBox.style.visibility = 'visible';
+        statusBox.style.borderColor = '';
     }
 
     function resetTimer() {
@@ -115,7 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset UI
         startPauseBtn.textContent = '▶';
         document.body.className = '';
-        statusBox.style.display = 'none';
+        statusBox.style.visibility = 'hidden';
+        statusBox.style.borderColor = 'transparent';
         
         // Update displays
         updateTimeDisplay();
